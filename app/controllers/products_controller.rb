@@ -26,11 +26,11 @@ class ProductsController < ApplicationController
 
   # pour le slider mobile
   def slide
-    if user_signed_in?
-      @address = current_user.address
-      @distance = current_user.distance
-      @active = Product.all.where(active: true)
-      @products = @active.near(@address, @distance).sample(50)
+    if user_signed_in? && @products != current_user.products
+        @address = current_user.address
+        @distance = current_user.distance
+        @active = Product.all.where(active: true)
+        @products = @active.near(@address, @distance).sample(50)
     else
       redirect_to search_path
     end

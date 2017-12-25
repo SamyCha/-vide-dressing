@@ -1,4 +1,5 @@
-<div id="status"></div>
+
+<br>
 <div class="text-center">
   Glissez vers la droite <br> pour ajouter à vos coups de coeur
 </div>
@@ -17,19 +18,21 @@
        <div><%= product.price %> euros<br>
          <div><h2><%= product.address %></h2><br>
          </div>
-         <div class="like"></div>
-         <div class="dislike"></div>
-       </li>
-       <% end %>
-     </ul>
-   </div>
-   <!-- end jtinder container -->
- </div>
- <!-- end padding container -->
- <div class="text-center">
+         <div class="like">
+        </div>
+        <div class="dislike"></div>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <!-- end jtinder container -->
+</div>
+<!-- end padding container -->
+<div class="text-center">
   <%= link_to your_articles_path, class: "btn btn-info" do %>
   Voir tous vos coups de coeur
   <% end %>
+  <div id="status"></div>
    <!-- jTinder trigger by buttons
 
    <div class="actions">
