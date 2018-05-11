@@ -135,8 +135,6 @@ ActiveRecord::Schema.define(version: 20180213172203) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
-    t.bigint "meeting_id"
-    t.index ["meeting_id"], name: "index_photos_on_meeting_id"
     t.index ["product_id"], name: "index_photos_on_product_id"
   end
 
@@ -228,7 +226,6 @@ ActiveRecord::Schema.define(version: 20180213172203) do
   add_foreign_key "meetings", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
-  add_foreign_key "photos", "meetings"
   add_foreign_key "photos", "products"
   add_foreign_key "products", "users"
   add_foreign_key "reservations", "products"

@@ -1,10 +1,15 @@
 <section id="section-jumbotron" class="jumbotron jumbotron-fluid text-white d-flex justify-content-center align-items-center">
   <div class="container text-center">
     <div class="col-md-6 text-left">
-      <h2>Les armoires de Paris</h2>
-      <h4>Dénichez des articles à proximité ou lors de<%= link_to meetings_path do %> nos evenements <% end %> et prenez contact gratuitement avec leurs vendeurs!</h4>
+
+      <h2>La Capsule créateur</h2>
+
+
+      <h4 style="font-family:Sacramento;  font-size: 28px; font-weight: bold;">par Les armoires de Paris <%= image_tag "armoires.png", width: '40px' %></h4>
+
+      <h5>Decouvrez notre collectif de créateurs ou venez les rencontrer <br> lors de nos evenements créateurs et vide-dressing <br> ou dans nos boutiques ephemères</h5>
       <%= link_to search_path, class: "btn btn-info" do %>
-      Découvrez nos articles
+      Découvrez leurs créations
       <% end %>
 <!--
       <% if user_signed_in? %>
@@ -21,7 +26,7 @@
     <div class="box-shadow">
      <% if !user_signed_in? %>
      <section>
-        <h5><%= image_tag "signup.png", heigth:75, width: 55 %>Rester informé</h5>
+        <h5><%= image_tag "signup.png", heigth:65, width: 55 %>Rester informé des dernières créations</h5>
         <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
         <%= devise_error_messages! %>
 <!--
@@ -58,7 +63,7 @@
     <div><%= f.submit "S'inscrire gratuitement",class: "btn btn-info"  %></div><br>
     <% end %>
     <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-    <strong><%= image_tag "seller.png", heigth:35, width: 25 %> <%= link_to "Devenir vendeuse", devenir_vendeuse_path %><br />
+    <strong><%= image_tag "seller.png", heigth:35, width: 25 %> <%= link_to "Exposer en tant que créateur", devenir_vendeuse_path %><br />
     </strong>
 
     <% end -%>
@@ -70,7 +75,12 @@
 <div class="container">
   <div class="row text-center">
     <div class="col-xs-12">
-      <p>Triari nullo perdiscere ille eius inquam dissentientium ut in quo disputando inquam ut quae solent tum dicas a potest cum.</p>
+    <%= link_to "Découvrez notre collectif de créateurs, concept store et vide dressing tendance chic","/#creators" %>
+
+
+
+
+
     </div>
   </div>
   <% if user_signed_in? %>
@@ -79,11 +89,24 @@
   </div>
   <% else %>
   <div class="row">
+   <div id='creators'> </div>
     <%= render "lastarticles" %>
   </div>
   <% end %>
+    <div class="row">
+    <div class="col-xs-12 text-center">
+     <h4><strong>Ils nous ont déjà fait confiance:</h4></strong>
+     <%= image_tag "armoires.png" %> <%= image_tag "armoires.png" %> <%= image_tag "armoires.png" %>  <%= image_tag "armoires.png" %>
+   </div>
+ </div>
+ <br>
+ <br>
+  <!--
   <div class="row">
     <%= render "asidecaroussel" %>
+
   </div>
+  -->
 </div>
 </div>
+

@@ -39,16 +39,17 @@
 <br>
 <div class="col-xs-12 box-shadow">
   <br>
+ <h4><i class="fa fa-dna fa-2x" aria-hidden="true"></i> MON ADN:</h4>
+  <div class="col-xs-6">
+ <%= @user.description %>
+ </div>
+
+
+ <div class="col-xs-6">
+<iframe width="280" height="157" src="https://www.youtube.com/embed/CNoMwQIwX6A?rel=0&amp;controls=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
   <% if @user.seller? %>
-  <h4><i class="fa fa-calendar fa-2x" aria-hidden="true"></i> VOUS ME TROUVEREZ AUX EVENEMENTS SUIVANTS:</h4>
-  <%= week_calendar number_of_weeks: 2, events: @meetings do |date, meetings| %>
-  <strong><%= date.strftime("%d") %></strong>
-  <% meetings.each do |meeting| %>
-  <div>
-    <strong><p><%= link_to meeting.name, meeting_path(meeting)  %></p></strong>
-  </div>
-  <% end %>
-  <% end %>
+
   <h4><i class="fa fa-female fa-2x" aria-hidden="true"></i> MES ARTICLES:</h4>
   <% @products.each do |product| %>
   <!-- affiche tous les articles actif en vente -->
@@ -95,6 +96,15 @@
       </div>
     </div>
   </div>
+  <% end %>
+    <h4><i class="fa fa-calendar fa-2x" aria-hidden="true"></i> VOUS ME TROUVEREZ AUX EVENEMENTS SUIVANTS:</h4>
+  <%= week_calendar number_of_weeks: 2, events: @meetings do |date, meetings| %>
+  <strong><%= date.strftime("%d") %></strong>
+  <% meetings.each do |meeting| %>
+  <div>
+    <strong><p><%= link_to meeting.name, meeting_path(meeting)  %></p></strong>
+  </div>
+  <% end %>
   <% end %>
   <% end %>
 </div>

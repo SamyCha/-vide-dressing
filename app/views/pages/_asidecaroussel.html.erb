@@ -1,55 +1,55 @@
 <div id="hidden-mobile">
-  <div class="row">
-    <div class="col-xs-12 text-center">
-     <h4><strong>Suivez notre actualité:</h4></strong>
-   </div>
+ <div class="row">
+  <div class="col-xs-12 text-center">
+   <h4><strong>Suivez notre actualité:</h4></strong>
  </div>
+</div>
 
 <div class="row">
 
  <div class="col-xs-6">
-    <% if @highlights.present? %>
+  <% if @highlights.present? %>
+  <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('http://res.cloudinary.com/hessdypy6/image/upload/v1515771216/alaffiche_rhs60z.jpg');">
+    <div class="card-category">EXPOSER / VISITER</div>
+    <div class="card-description">
+      <% @highlights.each do |meeting| %>
+      <h5>Ne pas manquer <br>
+        <%= link_to meeting.name, meeting_path(meeting.id) %></h5>
+      </div>
+    </div>
+    <% end %>
+    <% else %>
     <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('http://res.cloudinary.com/hessdypy6/image/upload/v1515771216/alaffiche_rhs60z.jpg');">
       <div class="card-category">EXPOSER / VISITER</div>
       <div class="card-description">
-        <% @highlights.each do |meeting| %>
-        <h5>Ne pas manquer <br>
-          <%= link_to meeting.name, meeting_path(meeting.id) %></h5>
-        </div>
+        <%= link_to "Voir nos évenements", meetings_path %></h5>
       </div>
-      <% end %>
-      <% else %>
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('http://res.cloudinary.com/hessdypy6/image/upload/v1515771216/alaffiche_rhs60z.jpg');">
-        <div class="card-category">EXPOSER / VISITER</div>
-        <div class="card-description">
-          <%= link_to "Voir nos évenements", meetings_path %></h5>
-        </div>
-      </div>
-      <% end %>
-      <br>
+    </div>
+    <% end %>
+    <br>
   </div>
 
-    <div class="col-xs-6">
-      <% if @starsellers.present? %>
+  <div class="col-xs-6">
+    <% if @starsellers.present? %>
+    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('https://sixactualites.fr/wp-content/uploads/2017/06/Bijou.jpg');">
+      <div class="card-category">DECOUVREZ</div>
+      <div class="card-description">
+        <% @starsellers.each do |user| %>
+        <h5>Nouveau créateur<br>
+          <%= link_to user.pseudo, user_path(user) %></h5>
+          <% end %>
+        </div>
+      </div>
+      <% else %>
       <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('https://sixactualites.fr/wp-content/uploads/2017/06/Bijou.jpg');">
         <div class="card-category">DECOUVREZ</div>
         <div class="card-description">
-          <% @starsellers.each do |user| %>
-          <h5>Nouveau créateur<br>
-            <%= link_to user.pseudo, user_path(user) %></h5>
-            <% end %>
-          </div>
+          <%= link_to "Nos derniers articles", search_path %></h5>
         </div>
-        <% else %>
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('https://sixactualites.fr/wp-content/uploads/2017/06/Bijou.jpg');">
-          <div class="card-category">DECOUVREZ</div>
-          <div class="card-description">
-            <%= link_to "Nos derniers articles", search_path %></h5>
-          </div>
-        </div>
-        <% end %>
+      </div>
+      <% end %>
+    </div>
   </div>
-   </div>
 
- </div>
+</div>
 

@@ -1,6 +1,5 @@
 
 <h3><strong><%= @product.name %></strong></h3>
-
 <div class= "row">
   <% if @product.reservations.count >= 1 %>
   <i class="fa fa-heart" aria-hidden="true"></i> <%= @product.reservations.count %> utilisateur intéréssé
