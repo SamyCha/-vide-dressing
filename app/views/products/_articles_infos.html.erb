@@ -18,9 +18,7 @@
       <%= image_tag avatar_url(@product.user), class:"img-circle avatar-large" %>
       <br>
     -->
-    vendeur: <strong><%= link_to @product.user.pseudo ,user_path(@product.user) %></strong>
     <br>
-    <span id="average_rating_header"></span> <%= @product.user.reviews.count %> commentaires
     <% if @product.active? %>
     <%= render 'articles_map' %>
     <% end %>
