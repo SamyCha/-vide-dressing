@@ -1,42 +1,41 @@
 <section id="section-jumbotron" class="jumbotron jumbotron-fluid text-white d-flex justify-content-center align-items-center">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-4">
-        <h3>Vous souhaitez devenir vendeuse au cours de nos évenements?</h3>
-        <h4>Choisissez l'évenement qui vous interesse.</h4>
-        Rien de plus simple: Choisissez l'évenement ou les evenements qui vous interessent, et inscrivez-vous via notre page event-bride.
+      <div class="col-xs-12 text-center">
+        <h3>Vous souhaitez être créateur exposant au cours de nos évenements et sur notre plateforme?</h3>
+        <h4>Choisissez la formule qui vous interesse.</h4>
         <%= link_to "Prenez connaissance nos conditions", conditions_path %> <br><br>
-        <!--
-        <%= link_to "Devenir vendeuse", new_user_registration_path, class:"btn btn-info" %>
-        -->
       </div>
-      <div class="col-xs-12 col-sm-4">
+    </div>
+    <div class='row'>
+     <div class="col-xs-4">
+      <div class="panel panel-default box-shadow">
+        <h4>Formule à 4eur/mois</h4>
+        Exposer vos créations sur notre site web (max 5 produits)
+        <br>Commission de 12% sur les ventes <br><br>
+        <%= link_to "Choisir cette formule", new_user_registration_path, class:"btn btn-info" %>
+        <br><br>
       </div>
-      <ul>
-       <% @meetings.each do |meeting| %>
-
-
-       <div class="col-xs-12 col-sm-4">
-        <li>
-          <div class="panel panel-default box-shadow">
-            <div class="panel-heading preview">
-              <strong><%= meeting.name %></strong>
-            </div>
-            <div class="panel-body">
-              <br>
-              <%= meeting.details %><br>
-              <%= meeting.address %><br>
-              <strong><%= meeting.start_time.strftime("%d/%m/%Y") %></strong>
-              <div class="col-xs-12 text-center">
-
-                <%= link_to "Reserver un stand", meeting.reservation, :target => "_blank", class: 'btn btn-md btn-info' %>
-              </div>
-            </div>
-          </div>
-      <% end %>
-        </li>
-    </ul>
-      </div>
+    </div>
+    <div class="col-xs-4">
+      <div class="panel panel-default box-shadow">
+       <h4>Formule à 6eur/mois</h4>
+       Exposer vos créations sur notre site web (max 10 produits)
+       <br>Commission de 12% sur les ventes
+       <br><br>
+       <%= link_to "Choisir cette formule", new_user_registration_path, class:"btn btn-info" %>
+       <br><br>
+     </div>
+   </div>
+   <div class="col-xs-4">
+    <div class="panel panel-default box-shadow">
+      <h4>Formule à 8eur/mois</h4>
+      Exposer vos créations sur notre site web (max 20 produits)
+      <br> Pas de commission prises sur les ventes <br><br>
+      <%= link_to "Choisir cette formule", new_user_registration_path, class:"btn btn-info" %>
+      <br><br>
+    </div>
   </div>
+</div>
 </div>
 </section>
