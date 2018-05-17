@@ -5,6 +5,8 @@
     <div class="col-md-6 text-left">
       <i class="fa fa-female fa" aria-hidden="true"></i>:
       <%= @product.category %><br>
+      Créateur: <strong><%= link_to @product.user.pseudo ,user_path(@product.user) %></strong><br>
+      <span id="average_rating_header"></span> <%= @product.user.reviews.count %> commentaires <br>
       <%= image_tag "brand.png", heigth:10, width: 20 %>:
       <%= @product.brand %><br>
       <%= image_tag "size.png", heigth:10, width: 20 %>:
