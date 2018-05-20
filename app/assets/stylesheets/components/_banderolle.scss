@@ -3,7 +3,11 @@
   align-items: center;
   padding: 20px;
   border-radius: 3px;
+  background-color: #3c6382;
+  opacity:0.9;
+  color: white;
   transition: all 0.15s ease;
+  margin-bottom: 8px;
 }
 
 /* Body design */
@@ -76,7 +80,7 @@
 
 /* Hover effects */
 .product:hover {
-  background: #f7f7fa;
+  background: #35495d;
   cursor: pointer;
 }
 .product-upvote:hover, .product-upvote.product-upvote-upvoted {
