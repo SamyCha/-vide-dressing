@@ -1,0 +1,17 @@
+<section id="section-jumbotron" class="jumbotron jumbotron-fluid text-white d-flex justify-content-center align-items-center">
+  <div class="container">
+    <h4>Découvrez tous les créateurs de la Capsule</h4>
+    <% @sellers.each do |user| %>
+    <div class="product">
+      <div class='product-upvote'>
+      </div>
+      <%= image_tag avatar_url(user), alt:"kudoz", class:"product-image hidden-xs" %>
+      <div class='product-body'>
+        <h4><%= link_to user.pseudo, user_path(user) %></h4>
+        <%= user.description %>
+      </div>
+      <%= user.address %>
+    </div>
+    <% end %>
+  </div>
+</section>
