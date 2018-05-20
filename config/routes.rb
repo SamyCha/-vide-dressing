@@ -62,7 +62,7 @@ root to: 'pages#home'
 
   get '/rating' => "reviews#rating"
   get '/mini_index' => 'products#mini_index'
-
+  get '/sellers' => 'users#seller'
 # admindashbooard: fast publication seller/product/review
 patch '/publish_product/:id' =>'pages#publish_product', as: :publish_product
 patch '/user_to_seller/:id' =>'pages#user_to_seller', as: :user_to_seller

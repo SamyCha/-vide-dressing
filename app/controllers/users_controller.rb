@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :authenticate_user!, except: %i[show]
+  before_action :authenticate_user!, except: %i[show, seller]
   before_action :is_admin, only: %i[index]
   def show
 
@@ -12,7 +12,10 @@ class UsersController < ApplicationController
     @products = @user.products
   end
 
-
+#List of all sellers
+def seller
+  @sellers = User.seller
+end
 
 #List of all users
 def index
