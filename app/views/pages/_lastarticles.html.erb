@@ -1,6 +1,8 @@
 <div id="hidden-mobile">
   <div class="col-xs-12 text-center">
-    <p>___________</p><h4><strong>Les dernières créations</strong></h4>
+    <p>___________</p><h4><strong>Les dernières créations</strong> <%= link_to search_path, class: "btn btn-info btn-sm" do %>
+      Toutes les créations
+      <% end %></h4>
   </div>
   <div class="col-xs-12">
     <% @selection.each do |product| %>

@@ -17,7 +17,7 @@ if user_signed_in?
     @address = current_user.address
     @distance = current_user.distance
     @active = Product.all.where(active: true)
-    @proximity = @active.near(@address, @distance).sample(8)
+    @proximity = @active.near(@address, @distance).sample(4)
 end
 
   end
