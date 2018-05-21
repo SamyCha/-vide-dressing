@@ -20,6 +20,23 @@
   </div>
   <div class="col-md-3 ">
   </div>
+
+ <% if user_signed_in? %>
+<div class="col-md-3 ">
+    <div class="box-shadow">
+    Mon compte:
+
+<h5 style="color:white;"><%= image_tag avatar_url(current_user), class: "avatar-bordered" %> <strong> <%= current_user.pseudo %></strong></h5>
+<%= current_user.email %><br>
+<%= current_user.address %><br>
+
+<%= link_to "Mettre à jour mes informations", edit_user_registration_path %>
+    </div>
+    </div>
+<% end %>
+
+
+
   <div class="col-md-3 ">
     <div class="box-shadow">
      <% if !user_signed_in? %>
@@ -27,8 +44,6 @@
       <h5 style="color:white;"><%= image_tag "signup.png", heigth:65, width: 55 %><strong> Rejoignez-nous</strong></h5>
       <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
-
-
       <div class="form-group">
        <div  style="color:black;">
         <%= f.email_field :email, autofocus: true, placeholder: "adresse email", :class=>"input-small" %><br>
@@ -39,7 +54,6 @@
         <%= f.password_field :password, autocomplete: "off", placeholder: "Créer un mot de passe", :class=>"input-small" %>
       </div>
     </div>
-
     <div class="form-group">
       <div  style="color:black;">
         <%= f.text_field :address, placeholder: "Adresse postale", id:"user_input_autocomplete_address", :class=>"input-small"  %>
@@ -49,7 +63,6 @@
         <input id="country" name="country" disabled type="hidden">
       </div>
     </div>
-
     Articles pouvant m'interesser:
     <div class="col-xs-1">
      0 km
@@ -60,8 +73,6 @@
   <div class="col-xs-1">
    1000 kms
  </div><br><br>
-
-
  <div><%= f.submit "S'inscrire gratuitement",class: "btn btn-info"  %></div><br>
  <% end %>
  <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
@@ -71,6 +82,7 @@
  <% end %>
 </div>
 </div>
+
 <% if user_signed_in? %>
 <div class="row">
   <%= render "proximityarticles" %>
