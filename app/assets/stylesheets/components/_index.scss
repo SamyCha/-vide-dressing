@@ -26,6 +26,23 @@ li {
     list-style-type: none;
 }
 
+//Type Wrtiting
+
+/* Global */
+
+.line-1{
+    position: relative;
+    top: 50%;
+    width: 24em;
+    margin: 0 auto;
+    border-right: 2px solid rgba(255,255,255,.75);
+    font-size: 120%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);
+}
+
 //box en home
 .box-shadow {
  width: 0,5em;
@@ -48,7 +65,7 @@ li {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  min-height: 80vh;
+  min-height: 65vh;
   color: #374344;
 }
 section {
