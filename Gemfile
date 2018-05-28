@@ -55,10 +55,11 @@ group :development, :test do
   gem 'pry-rails'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'web-console', '>= 3.3.0'
+  gem 'rspec-rails', '~> 3.7'
 end
 
 group :development do
   gem 'guard'
   gem 'guard-rubocop'
+  gem 'web-console', '>= 3.3.0'
 end
