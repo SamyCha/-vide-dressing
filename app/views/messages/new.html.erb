@@ -1,30 +1,32 @@
 <section id="section-jumbotron" class="jumbotron jumbotron-fluid text-white d-flex justify-content-center align-items-center"><div class="container-fluid">
+<div class="box-shadow">
   <div class="row">
     <div class="col-md-8 col-md-offset-2 text-center">
 
-    <h3>Envoyer un message</h3>
+    <h3>Envoyer un message</h3> <%= link_to 'Retour à la liste des messages', conversations_path, class:' btn btn-info' %>
 
       <%= form_tag messages_path, method: :post do %>
-      <div class="form-group">
-        <%= label_tag 'message[subject]', 'Subject' %>
+      <div class="form-group text-left">
+        <h5>Sujet:</h5>
         <%= text_field_tag 'message[subject]', nil, class: 'form-control', required: true %>
       </div>
 
-      <div class="form-group">
-        <%= label_tag 'message[body]', 'Message' %>
+      <div class="form-group text-left">
+         <h5>Message:</h5>
         <%= text_area_tag 'message[body]', nil, cols: 3, class: 'form-control', required: true %>
       </div>
 
-      <div class="form-group">
-        <%= label_tag 'recipients', 'Choisir un destinataire' %>
+      <div class="form-group text-left">
+        <h5>Choisir un destinataire:</h5>
         <%= select_tag 'recipients', recipients_options(@chosen_recipient), multiple: true, class: 'form-control chosen-it' %>
       </div>
 
-      <%= submit_tag 'Envoyer', class: 'btn btn-md btn-danger' %>
+      <%= submit_tag 'Envoyer', class:'btn btn-info' %>
       <% end %>
       <br>
       <br>
     </div>
   </div>
+</div>
 </div>
 </section>

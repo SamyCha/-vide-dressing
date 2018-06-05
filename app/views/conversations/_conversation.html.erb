@@ -1,22 +1,36 @@
-<li class="list-group-item clearfix">
-  <%= link_to conversation.subject, conversation_path(conversation) %>
-
-  <div class="btn-group-vertical pull-right">
-    <% if conversation.is_trashed?(current_user) %>
-      <%= link_to 'Restore', restore_conversation_path(conversation), class: 'btn btn-xs btn-info', method: :post %>
-    <% else %>
-      <%= link_to 'Move to trash', conversation_path(conversation), class: 'btn btn-xs btn-danger', method: :delete,
-                  data: {confirm: 'Are you sure?'} %>
-
-      <% if conversation.is_unread?(current_user) %>
-        <%= link_to 'Mark as read', mark_as_read_conversation_path(conversation),
-                    class: 'btn btn-xs btn-info', method: :post %>
+<li class='box-shadow'>
+<br>
+  <div class="row">
+    <div class="col-xs-3">
+      <% conversation.participants.each do |participant| %>
+      <% unless participant == current_user %>
+      <%= image_tag avatar_url(participant), class: "avatar-bordered" %>
       <% end %>
-    <% end %>
+      <% end %>
+    </div>
+    <div class="col-xs-5 text-left">
+      Sujet: <strong><%= link_to conversation.subject, conversation_path(conversation) %></strong>
+      <small>(<span class="text-muted"><%= conversation.last_message.created_at.strftime("%-d %B %Y, %H:%M:%S") %></span>)</small>
+      <br>
+      <strong><%= conversation.last_message.body %>
+      </strong>
+    </div>
+    <div class="col-xs-3">
+      <div class="btn-group-vertical pull-right">
+        <% if conversation.is_trashed?(current_user) %>
+        <%= link_to 'Restore', restore_conversation_path(conversation), class: 'btn btn-xs btn-info', method: :post %>
+        <% else %>
+        <%= link_to 'Mettre à la corbeille', conversation_path(conversation), class: 'btn btn-xs btn-danger', method: :delete,
+        data: {confirm: 'Are you sure?'} %>
+        <% if conversation.is_unread?(current_user) %>
+        <%= link_to 'Marqué comme lu', mark_as_read_conversation_path(conversation),
+        class: 'btn btn-xs btn-info', method: :post %>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-1"></div>
   </div>
-
-  <p><%= render 'conversations/participants', conversation: conversation %></p>
-
-  <p><%= conversation.last_message.body %>
-    <small>(<span class="text-muted"><%= conversation.last_message.created_at.strftime("%-d %B %Y, %H:%M:%S") %></span>)</small></p>
+  <br>
 </li>
+<br>

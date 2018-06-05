@@ -1,92 +1,72 @@
 <section id="section-jumbotron" class="jumbotron jumbotron-fluid text-white d-flex justify-content-center align-items-center">
   <div class="container text-center">
     <div class="col-md-6 text-left">
-
       <h2>Capsule créateurs</h2>
-
-
       <h4 style="font-family:Sacramento;  font-size: 28px; font-weight: bold;">par Les armoires de Paris <%= image_tag "armoires.png", width: '40px' %></h4>
       <h5>Decouvrez notre collectif de créateurs ou venez les rencontrer <br> lors de nos evenements créateurs et vide-dressing <br> ou dans nos boutiques ephemères</h5>
       <%= link_to "Découvrez les dernières créations","/#creators", class: "btn btn-info" %>
-<!--
-      <% if user_signed_in? %>
-      <div class="hidden-desktop">
-      <%= link_to "Les articles autour de vous", slide_path, class:"btn btn-info" %>
+      <br><br>
+    </div>
+    <div class="col-md-3 ">
+    </div>
+    <% if user_signed_in? %>
+    <div class="col-md-3 ">
+      <div class="box-shadow">
+        Mon compte:
+        <h5 style="color:white;"><%= image_tag avatar_url(current_user), class: "avatar-bordered" %> <strong> <%= current_user.pseudo %></strong></h5>
+        <%= current_user.email %><br>
+        <%= current_user.address %><br>
+        <%= link_to "Mettre à jour mes informations", edit_user_registration_path %>
       </div>
-      <% end %>
-    -->
-    <br><br>
-  </div>
-  <div class="col-md-3 ">
-  </div>
-
- <% if user_signed_in? %>
-<div class="col-md-3 ">
-    <div class="box-shadow">
-    Mon compte:
-
-<h5 style="color:white;"><%= image_tag avatar_url(current_user), class: "avatar-bordered" %> <strong> <%= current_user.pseudo %></strong></h5>
-<%= current_user.email %><br>
-<%= current_user.address %><br>
-
-<%= link_to "Mettre à jour mes informations", edit_user_registration_path %>
     </div>
-    </div>
-<% end %>
-
-
-
-  <div class="col-md-3 ">
-    <div class="box-shadow">
-     <% if !user_signed_in? %>
-     <section>
-      <h5 style="color:white;"><%= image_tag "signup.png", heigth:65, width: 55 %><strong> Rejoignez-nous</strong></h5>
-      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-      <%= devise_error_messages! %>
+    <% end %>
+    <div class="col-md-3 ">
+    <!-- Cartouche Sign-Up -->
+      <div class="box-shadow">
+       <% if !user_signed_in? %>
+       <section>
+        <h5 style="color:white;"><%= image_tag "signup.png", heigth:65, width: 55 %><strong> Rejoignez-nous</strong></h5>
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+        <div class="form-group">
+         <div  style="color:black;">
+          <%= f.email_field :email, autofocus: true, placeholder: "adresse email", :class=>"input-small" %><br>
+        </div>
+      </div>
       <div class="form-group">
-       <div  style="color:black;">
-        <%= f.email_field :email, autofocus: true, placeholder: "adresse email", :class=>"input-small" %><br>
+        <div  style="color:black;">
+          <%= f.password_field :password, autocomplete: "off", placeholder: "Créer un mot de passe", :class=>"input-small" %>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <div  style="color:black;">
-        <%= f.password_field :password, autocomplete: "off", placeholder: "Créer un mot de passe", :class=>"input-small" %>
+      <div class="form-group">
+        <div  style="color:black;">
+          <%= f.text_field :address, placeholder: "Adresse postale", id:"user_input_autocomplete_address", :class=>"input-small"  %>
+          <input id="street_number" name="street_number" disabled type="hidden">
+          <input id="route" name="route" disabled type="hidden">
+          <input id="locality" name="locality" disabled type="hidden">
+          <input id="country" name="country" disabled type="hidden">
+        </div>
       </div>
+      Articles pouvant m'interesser:
+      <div class="col-xs-1">
+       0 km
+     </div>
+     <div class="col-xs-7">
+      <%= f.range_field :distance, :in => 0..1000, :step => '25' %>
     </div>
-    <div class="form-group">
-      <div  style="color:black;">
-        <%= f.text_field :address, placeholder: "Adresse postale", id:"user_input_autocomplete_address", :class=>"input-small"  %>
-        <input id="street_number" name="street_number" disabled type="hidden">
-        <input id="route" name="route" disabled type="hidden">
-        <input id="locality" name="locality" disabled type="hidden">
-        <input id="country" name="country" disabled type="hidden">
-      </div>
-    </div>
-    Articles pouvant m'interesser:
     <div class="col-xs-1">
-     0 km
-   </div>
-   <div class="col-xs-7">
-    <%= f.range_field :distance, :in => 0..1000, :step => '25' %>
-  </div>
-  <div class="col-xs-1">
-   1000 kms
- </div><br><br>
- <div><%= f.submit "S'inscrire gratuitement",class: "btn btn-info"  %></div><br>
- <% end %>
- <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
- <strong><%= image_tag "seller.png", heigth:35, width: 25 %> <%= link_to "Exposer en tant que créateur", devenir_vendeuse_path %><br />
- </strong>
- <% end -%>
- <% end %>
+     1000 kms
+   </div><br><br>
+   <div><%= f.submit "S'inscrire gratuitement",class: "btn btn-info"  %></div><br>
+   <% end %>
+   <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+   <strong><%= image_tag "seller.png", heigth:35, width: 25 %> <%= link_to "Exposer en tant que créateur", devenir_vendeuse_path %><br />
+   </strong>
+   <% end -%>
+   <% end %>
+ </div>
+ <!-- Fin du Cartouche -->
 </div>
-</div>
-
-<% if user_signed_in? %>
-<div class="row">
-  <%= render "proximityarticles" %>
-</div>
-<% end %>
 </section>
 </div>
 

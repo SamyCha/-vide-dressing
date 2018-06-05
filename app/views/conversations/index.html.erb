@@ -1,26 +1,31 @@
 <section id="section-jumbotron" class="jumbotron jumbotron-fluid text-white d-flex justify-content-center align-items-center">
 <div class="container-fluid">
-<h3>Vos messages</h3>
+
+<h3>Mes Messages:</h3>
   <div class="row">
     <div class="col-sm-3">
+    <div class='box-shadow'>
       <ul class="nav nav-pills nav-stacked">
-        <%= mailbox_section 'inbox', @box %>
-        <%= mailbox_section 'sent', @box %>
-        <%= mailbox_section 'trash', @box %>
+        <li><%= link_to 'Reçus', conversations_path %></li>
+        <li><%= link_to 'Envoyés',  "#" %></li>
+        <li><%= link_to 'Corbeille', empty_trash_conversations_path %></li>
       </ul>
     </div>
+    <br>
+      <%= link_to 'Créer un nouveau message', new_message_path, class:'btn btn-info' %>
+    </div>
 
-    <div class="col-sm-9  box-shadow">
+    <div class="col-sm-9">
       <% if @box == 'trash' %>
       <p><%= link_to 'Empty trash', empty_trash_conversations_path, class: 'btn btn-danger', method: :delete,
        data: {confirm: 'Are you sure?'} %></p>
        <% end %>
-       <ul class="list-group">
+       <ul>
         <%= render partial: 'conversations/conversation', collection: @conversations %>
       </ul>
-
       <%= will_paginate %>
     </div>
   </div>
+
 </div>
 </section>
