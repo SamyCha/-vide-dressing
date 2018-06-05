@@ -73,10 +73,11 @@ autocomplete('#aa-search-input',
           <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="panel panel-default box-shadow">
               <div class="panel-heading preview">
-                <%= image_tag product.photos[0].image.url, style: 'height:120px;width:232px' if product.photos.length > 0  %>
+
               </div>
               <div class="panel-body">
                 <div class="col-xs-12 text-center">
+                  <%= image_tag product.photos[0].image.url, class: 'avatar-rounded' if product.photos.length > 0  %>
                   <h5><%= link_to product.name, product %></h5><%= image_tag "brand.png", heigth:12, width: 24 %> <%= product.brand %><br>
                   <hr>
                 </div>
