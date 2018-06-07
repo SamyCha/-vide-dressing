@@ -25,6 +25,13 @@ GIT
       railties (>= 4.2, <= 5.2)
       responders
 
+GIT
+  remote: https://github.com/stripe/stripe-ruby
+  revision: 1f18f24991a41c9d381705cd26c21294fd968eaa
+  specs:
+    stripe (3.15.0)
+      faraday (~> 0.10)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -452,6 +459,7 @@ DEPENDENCIES
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
+  stripe!
   toastr-rails
   uglifier
   web-console (>= 3.3.0)

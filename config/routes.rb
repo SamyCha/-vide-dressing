@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   resources :meetings
 
 resources :users, only: [:index]
+resources :charges
+
+
+
 
   ActiveAdmin.routes(self)
   devise_for :users,

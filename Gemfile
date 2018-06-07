@@ -47,7 +47,8 @@ gem 'uglifier'
 gem "algoliasearch-rails"
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-
+#payment module
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 group :development, :test do
   gem 'listen', '~> 3.0.5'
