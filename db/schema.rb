@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180213172203) do
+ActiveRecord::Schema.define(version: 20180607174542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -138,6 +138,19 @@ ActiveRecord::Schema.define(version: 20180213172203) do
     t.index ["product_id"], name: "index_photos_on_product_id"
   end
 
+  create_table "plans", force: :cascade do |t|
+    t.string "payment_gateway_plan_identifier"
+    t.string "name"
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "USD", null: false
+    t.integer "interval"
+    t.integer "interval_count"
+    t.integer "status"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "brand"
     t.string "size"
@@ -158,6 +171,19 @@ ActiveRecord::Schema.define(version: 20180213172203) do
     t.boolean "interest"
     t.integer "reviewcode"
     t.index ["user_id"], name: "index_products_on_user_id"
+  end
+
+  create_table "purchases", force: :cascade do |t|
+    t.string "email"
+    t.integer "amount"
+    t.string "description"
+    t.string "currency"
+    t.string "customer_id"
+    t.string "card"
+    t.integer "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "uuid"
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -215,6 +241,7 @@ ActiveRecord::Schema.define(version: 20180213172203) do
     t.integer "distance", default: 25
     t.boolean "starseller", default: false
     t.boolean "choice", default: false
+    t.string "payment_gateway_customer_identifier"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["state"], name: "index_users_on_state"
