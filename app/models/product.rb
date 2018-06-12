@@ -34,13 +34,6 @@ class Product < ApplicationRecord
     reviews.count == 0 ? 0 : reviews.average(:star).round(2)
   end
 
-#algolia pour les produit publiés uniquement
-include AlgoliaSearch
-algoliasearch if: :active? do
-  attribute :name, :brand, :category, :color, :size, :price
-end
-
-
 #utilisé pour faire le rating
 def self.search(search)
    where("name LIKE ?", "%#{search}%")

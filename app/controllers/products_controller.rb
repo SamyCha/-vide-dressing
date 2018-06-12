@@ -2,7 +2,7 @@
 
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
-  before_action :authenticate_user!, except: %i[show search slide]
+  before_action :authenticate_user!, except: %i[show index slide]
   before_action :require_same_user, only: %i[edit update destroy]
   before_action :is_admin, only: %i[all_products]
 
@@ -10,8 +10,9 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
-  def search
-    @hits = Product.where(active: true)
+  def index
+    @search = Product.ransack(params[:q])
+    @products = @search.result.where(active: true)
   end
 
   # pour le slider mobile
@@ -29,7 +30,7 @@ class ProductsController < ApplicationController
 end
 
   # liste de tous les articles publiés et non publiés du vendeur
-  def index
+  def my_index
     if current_user.seller?
       @products = current_user.products
     else

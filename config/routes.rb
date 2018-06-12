@@ -56,7 +56,7 @@ root to: 'pages#home'
   get 'all_products' => 'products#all_products'
   get 'your_articles' => 'reservations#your_articles'
   get '/your_reservations' => 'reservations#your_reservations'
-  get '/search' => 'products#search'
+  get '/search' => 'products#index'
   get '/slide' => 'products#slide'
   get '/admindashboard' => 'pages#admindashboard'
   get '/conditions' => 'pages#conditions'
@@ -66,6 +66,7 @@ root to: 'pages#home'
 
   get '/rating' => "reviews#rating"
   get '/mini_index' => 'products#mini_index'
+  get '/my_index' => 'products#my_index'
   get '/sellers' => 'users#seller'
 # admindashbooard: fast publication seller/product/review
 patch '/publish_product/:id' =>'pages#publish_product', as: :publish_product

@@ -44,7 +44,6 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
-gem "algoliasearch-rails"
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 #payment module

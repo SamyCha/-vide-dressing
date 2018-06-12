@@ -36,9 +36,9 @@
 
   <!-- if user is seller -->
   <% if current_user.seller? %>
-  <%= link_to "Vendre des articles", products_path, class: "navbar-wagon-item navbar-wagon-link" %>
+  <%= link_to "Mes articles", my_index_path, class: "navbar-wagon-item navbar-wagon-link" %>
   <% end %>
-  <%= link_to "Messages", conversations_path, class: "navbar-wagon-item navbar-wagon-link" %>
+  <%= link_to "Mes Messages", conversations_path, class: "navbar-wagon-item navbar-wagon-link" %>
   <!-- Avatar with dropdown menu -->
   <div class="navbar-wagon-item">
     <div class="dropdown">
