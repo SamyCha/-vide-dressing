@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+class MessagesController < ApplicationController
 :id  before_action :authenticate_user!
 
 def new
