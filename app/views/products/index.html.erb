@@ -1,5 +1,6 @@
 <section id="section-jumbotron" class="jumbotron jumbotron-fluid text-white d-flex justify-content-center align-items-center">
   <div class="container-fluid">
+
     <div class="row">
       <div class="content">
         <div id="searchbox">
@@ -9,53 +10,61 @@
                 <%= link_to "Rechercher un article", search_path,
                 class: "sidebar-link active" %></li>
                 <% if user_signed_in? %>
-                <li class="sidebar-item"><i class="fa fa-heart" aria-hidden="true"></i> <%= link_to your_articles_path, class: "navbar-wagon-item navbar-wagon-link" do %>
+                <li class="sidebar-item"><i class="fa fa-shopping-basket"  aria-hidden="true"></i> <%= link_to your_articles_path, class: "navbar-wagon-item navbar-wagon-link" do %>
                   <% if current_user.reservations.count == 1 %>
-                  Mon coup de coeur
+                  1 article dans mon panier
                   <% elsif current_user.reservations.count > 1 %>
-                  Mes <%= current_user.reservations.count %> coups de coeur
+                  <%= current_user.reservations.count %> articles dans mon panier
                   <% else %>
-                  Pas encore de coup de coeur!
+                  Panier vide
                   <% end %>
                   <% end %></li>
                   <li class="sidebar-item"><i class="fa fa-star-half-o" aria-hidden="true"></i>  <%= link_to "Notez un achat", rating_path, class: "navbar-wagon-item navbar-wagon-link" %>
                   </li>
                   <% end %>
                 </ul>
+
+
                 <div class='text-center', style='border-style: groove'>
                   <%= search_form_for @search do |f| %>
-                  <h5><strong>Recherche par type:</strong></h5>
+                  <label>Type d'article:</label><br>
                   <%= f.label :name_cont, 'article:' %>
                   <%= f.search_field :name_cont %>
                   <%= f.label :brand_cont, 'marque:' %>
                   <%= f.search_field :brand_cont %>
                   <%= f.label :size_cont, 'taille:' %>
                   <%= f.search_field :size_cont %>
-                  <div class='field'>
-                   <h5><strong>Recherche par prix:</strong></h5>
-                   <%= f.label :price_gteq, 'prix min:' %>
-                   <%= f.number_field :price_gteq %>
-                   <%= f.label :price_lteq, 'prix max:' %>
-                   <%= f.number_field :price_lteq %>
-                 </div>
-                 <br>
-                 <%= f.submit 'Lancer la recherche', class:'btn btn-info btn-sm' %><br>
-                 <%= link_to 'voir tous les articles', products_path %>
-                 <% end %>
-               </div>
-             </div>
-           </div>
-           <div class="col-xs-12">
-           <span style='color:white'>
-           <h4><strong>Découvrez une selection d'article:</strong></h4></span>
-            <% @products.each do |product| %>
-            <div class="col-xs-12 col-sm-6 col-md-3">
+                  <label>Prix:</label><br>
+                  <%= f.label :price_gteq, 'prix min:' %>
+                  <%= f.number_field :price_gteq %>
+                  <%= f.label :price_lteq, 'prix max:' %>
+                  <%= f.number_field :price_lteq %>
+                  <label>Adresse:</label>
+                  <%= f.text_field :address, placeholder: "Où est situé votre article ?", id:"user_input_autocomplete_address", class: "form-control" %>
+                  <input id="street_number" name="street_number" disabled type="hidden">
+                  <input id="route" name="route" disabled type="hidden">
+                  <input id="locality" name="locality" disabled type="hidden">
+                  <input id="country" name="country" disabled type="hidden">
+                  <br>
+                  <br>
+                  <%= f.submit 'Lancer la recherche', class:'btn btn-info btn-sm' %><br>
+                  <%= link_to 'voir tous les articles', products_path %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-9">
+             <h4><strong>Découvrez une selection d'article:</strong></h4>
+             <% @products.each do |product| %>
+             <div class="col-xs-12 col-sm-6 col-md-4">
               <div class="panel panel-default box-shadow">
                 <div class="panel-heading preview">
                 </div>
                 <div class="panel-body">
                   <div class="col-xs-12 text-center">
-                    <%= image_tag product.photos[0].image.url, class: 'avatar-rounded' if product.photos.length > 0  %>
+                  <!--
+                      <%= image_tag product.photos[0].image.url, class: 'avatar-rounded' if product.photos.length > 0  %>
+                    -->
                     <h5><%= link_to product.name, product %></h5><%= image_tag "brand.png", heigth:12, width: 24 %> <%= product.brand %><br>
                     <hr>
                   </div>
@@ -66,12 +75,12 @@
                   </div>
                   <div class="col-xs-6">
                     <% if user_signed_in? %>
-                    <% if @booked %>
+                    <% if @booked == true %>
                     <%= image_tag "heart.png", heigth:15, width: 30 %>
                     <% else %>
                     <%= form_for([product, product.reservations.new]) do |f| %>
                     <%= f.hidden_field :product_id, value: product.id %>
-                    <%= f.submit "ajouter à ma liste", class:"btn btn-info", data: { "disable-with": "Article ajouté..." } %>
+                    <%= f.submit "Ajouter à mon panier", class:"btn btn-info", data: { "disable-with": "Article ajouté..." } %>
                     <% end %>
                     <% end %>
                     <% end %>
@@ -81,7 +90,31 @@
             </div>
             <% end %>
           </div>
+          <div class='col-xs-3'>
+            <% if user_signed_in? %>
+            <h4><strong><i class="fa fa-shopping-basket"></i> Votre panier:</strong></h4></span>
+            <div class='box-shadow-nohover'>
+              <br>
+              <% if @articles.count == 0 %>
+              Votre panier est vide
+              <% else %>
+              <%= @articles.each do |article| %>
+                  - <%= article.product.name %>:
+                  <%= article.product.price %> euros <br>
+              <% end %>
+              <% end %>
+              <br>
+              <hr>
+              Nombre d'articles: <strong><%= @articles.count %></strong><br>
+              Total: <strong> XXX euros</strong>
+              <br> <%= link_to "Acceder à mon panier", your_articles_path %>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
+
+  <script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_JAVASCRIPT_KEY']}"></script>

@@ -13,6 +13,8 @@ class ProductsController < ApplicationController
   def index
     @search = Product.ransack(params[:q])
     @products = @search.result.where(active: true)
+
+    @articles = current_user.reservations
   end
 
   # pour le slider mobile

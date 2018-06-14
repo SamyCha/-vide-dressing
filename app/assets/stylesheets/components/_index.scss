@@ -59,6 +59,20 @@ li {
   cursor: pointer;
 }
 
+.box-shadow-nohover {
+ width: 0,5em;
+ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ background-color: #3c6382;
+ opacity:0.9;
+ text-align: left;
+ padding: 15px;
+ color: white;
+  transition: all 0.15s ease;
+}
+
+
+
+
 //background image home
 .jumbotron {
   background-image: url('background2.jpg');
