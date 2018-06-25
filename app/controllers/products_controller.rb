@@ -13,8 +13,9 @@ class ProductsController < ApplicationController
   def index
     @search = Product.ransack(params[:q])
     @products = @search.result.where(active: true)
-
-    @articles = current_user.reservations
+    if user_signed_in?
+      @articles = current_user.reservations
+    end
   end
 
   # pour le slider mobile

@@ -9,17 +9,6 @@
     </div>
     <div class="col-md-3 ">
     </div>
-    <% if user_signed_in? %>
-    <div class="col-md-3 ">
-      <div class="box-shadow">
-        Mon compte:
-        <h5 style="color:white;"><%= image_tag avatar_url(current_user), class: "avatar-bordered" %> <strong> <%= current_user.pseudo %></strong></h5>
-        <%= current_user.email %><br>
-        <%= current_user.address %><br>
-        <%= link_to "Mettre à jour mes informations", edit_user_registration_path %>
-      </div>
-    </div>
-    <% end %>
     <div class="col-md-3 ">
     <!-- Cartouche Sign-Up -->
       <div class="box-shadow">

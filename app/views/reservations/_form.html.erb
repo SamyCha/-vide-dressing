@@ -37,11 +37,11 @@
   <% if user_signed_in? && current_user != @user %>
   <% if @booked %>
   <%= link_to your_articles_path,  class: 'btn btn-md btn-info' do %>
-  Un vos coups de coeur <i class="fa fa-heart" aria-hidden="true"></i>
+  Déjà dans votre panier
   <% end %>
   <%= link_to "Contacter son vendeur", new_message_path(sender_id: current_user.id, recipient_id: @user.id), method: 'get', class: 'btn btn-md btn-danger' %>
   <% else %>
-  <%= f.submit "Ajouter à mes coups de coeur", class: 'btn btn-md btn-info' %>
+  <%= f.submit "Ajouter à mon panier", class: 'btn btn-md btn-info' %>
 
   <%= link_to "Contacter son vendeur", new_message_path(sender_id: current_user.id, recipient_id: @user.id), method: 'get', class: 'btn btn-md btn-danger' %>
   <% end %>

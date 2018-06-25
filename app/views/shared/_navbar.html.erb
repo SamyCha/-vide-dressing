@@ -23,13 +23,11 @@
   <!-- Links when logged in -->
   <% if current_user.client? %>
   <%= link_to your_articles_path, class: "navbar-wagon-item navbar-wagon-link" do %>
-  <i class="fa fa-heart" aria-hidden="true"></i>
-  <% if current_user.reservations.count == 1 %>
-  Mon coup de coeur
-  <% elsif current_user.reservations.count > 1 %>
-  Mes <%= current_user.reservations.count %> coups de coeur
+  <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+  <% if current_user.reservations.count >= 1 %>
+  <strong>Mon panier</strong> <div class="label label-danger"><%= current_user.reservations.count %></div>
   <% else %>
-  Pas encore de coup de coeur!
+  <strong>Votre panier est vide</strong>
   <% end %>
   <% end %>
   <% end %>
@@ -38,7 +36,6 @@
   <% if current_user.seller? %>
   <%= link_to "Mes articles", my_index_path, class: "navbar-wagon-item navbar-wagon-link" %>
   <% end %>
-  <%= link_to "Mes Messages", conversations_path, class: "navbar-wagon-item navbar-wagon-link" %>
   <!-- Avatar with dropdown menu -->
   <div class="navbar-wagon-item">
     <div class="dropdown">
